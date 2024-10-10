@@ -3,10 +3,10 @@ POST http://localhost:5000/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Test", 
-    "lastName": "Testovych",
-    "email": "test11@mail.mail",
-    "tel": "+390123456786"
+    "firstName": "Tony", 
+    "lastName": "Joss",
+    "email": "test145@mail.mail",
+    "tel": "+380123456786"
 }
 
 ### 422 {user}

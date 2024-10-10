@@ -1,6 +1,6 @@
 const express = require('express');
 const queryParser = require('query-parser-express');
-const { usersControler } = require('./controllers');
+const { usersControler, phonesControler } = require('./controllers');
 const { errorHandlers, validate, paginate } = require('./middleware');
 
 const app = express();
@@ -25,6 +25,14 @@ app.get('/users', paginate.paginateUsers, usersControler.getAllUsers);
 app.get('/users/:userId', usersControler.getUserById);
 app.patch('/users/:userId', usersControler.updateUserById);
 app.delete('/users/:userId', usersControler.deleteUserById);
+
+
+// ---------------- phones ---------------------\\
+app.post('/phones', validate.validationOnCreatePhone, phonesControler.createPhone);
+app.get('/phones', paginate.paginatePhones, phonesControler.getAllPhones);
+app.get('/phones/:phoneId', phonesControler.getPhoneById);
+app.patch('/phones/:phoneId', phonesControler.updatePhoneById);
+app.delete('/phones/:phoneId', phonesControler.deletePhoneById);
 
 app.use(errorHandlers.errorHandler);
 

@@ -1,0 +1,5 @@
+### 200 []
+GET http://localhost:5000/phones?page=1&results=5
+
+### 200 []
+GET http://localhost:5000/phones?page=50&results=-50

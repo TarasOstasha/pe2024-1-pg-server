@@ -1,0 +1,5 @@
+### 204 
+DELETE http://localhost:5000/phones/21
+
+### 404 'User Not Found'
+DELETE http://localhost:5000/phones/100

@@ -1,0 +1,35 @@
+### 200 OK (Phone Updated Successfully)
+PATCH http://localhost:5000/phones/1
+Content-Type: application/json
+
+{
+    "brand": "SamsungTest",
+    "model": "Galaxy S22",
+    "os": "Android",
+    "screen_size": 6.1,
+    "ram": 8,
+    "storage_capacity": 128,
+    "battery_capacity": 3700,
+    "camera_megapixels": 50,
+    "price": 899.99,
+    "release_date": "2022-02-25",
+    "is_dual_sim": true
+}
+
+### 404 'Phone Not Found'
+PATCH http://localhost:5000/phones/1000
+Content-Type: application/json
+
+{
+    "brand": "Samsung",
+    "model": "Galaxy S22",
+    "os": "Android",
+    "screen_size": 6.1,
+    "ram": 8,
+    "storage_capacity": 128,
+    "battery_capacity": 3700,
+    "camera_megapixels": 50,
+    "price": 899.99,
+    "release_date": "2022-02-25",
+    "is_dual_sim": true
+}
