@@ -73,3 +73,19 @@ module.exports.deletePhoneById = async (req, res, next) => {
     next(err);
   }
 };
+
+module.exports.getUserPhones = async (req, res, next) => {
+  const { userId } = req.params;
+  const { brand, startDate, endDate } = req.query;
+
+  try {
+    const userPhones = await Phone.getUserPhones(userId, { brand, startDate, endDate });
+    if (!userPhones.length) {
+      return next(createHttpError(404, 'No phones found for this user'));
+    }
+    res.status(200).json(userPhones);
+  } catch (err) {
+    console.error('Error fetching user phones:', err);  // Improved error logging
+    next(err);
+  }
+};

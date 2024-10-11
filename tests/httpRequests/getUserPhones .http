@@ -1,0 +1,9 @@
+###
+GET http://localhost:5000/users/3/phones
+
+###
+GET http://localhost:5000/users/3/phones?brand=Samsung
+###
+GET http://localhost:5000/users/3/phones?startDate=2023-01-01&endDate=2023-12-31
+
+

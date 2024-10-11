@@ -33,6 +33,7 @@ app.get('/phones', paginate.paginatePhones, phonesControler.getAllPhones);
 app.get('/phones/:phoneId', phonesControler.getPhoneById);
 app.patch('/phones/:phoneId', phonesControler.updatePhoneById);
 app.delete('/phones/:phoneId', phonesControler.deletePhoneById);
+app.get('/users/:userId/phones', phonesControler.getUserPhones);
 
 app.use(errorHandlers.errorHandler);
 

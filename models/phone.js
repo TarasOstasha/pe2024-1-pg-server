@@ -103,6 +103,39 @@ class Phone {
         throw err;
       }
     }
+    static async getUserPhones(userId, { brand, startDate, endDate }) {
+      try {
+        // const query = `
+        //   SELECT p.*
+        //   FROM phones p
+        //   JOIN phones_to_orders po ON p.id = po.phone_id  
+        //   JOIN users_phones up ON po.order_id = up.order_id 
+        //   JOIN users u ON up.user_id = u.id  
+        //   WHERE u.id = $1
+        //   AND ($2::text IS NULL OR p.brand = $2)
+        //   AND ($3::date IS NULL OR up.created_at >= $3) 
+        //   AND ($4::date IS NULL OR up.created_at <= $4);
+        // `;
+        const query = `
+      SELECT DISTINCT p.*
+      FROM phones p
+      JOIN phones_to_orders po ON p.id = po.phone_id
+      JOIN users_phones up ON po.order_id = up.order_id
+      JOIN users u ON up.user_id = u.id
+      WHERE u.id = $1
+      AND ($2::text IS NULL OR p.brand = $2)
+      AND ($3::date IS NULL OR up.created_at >= $3)
+      AND ($4::date IS NULL OR up.created_at <= $4);
+    `;
+        const params = [userId, brand || null, startDate || null, endDate || null];
+    
+        const { rows } = await Phone.pool.query(query, params);
+        return rows;
+      } catch (err) {
+        throw err;
+      }
+    }
+    
   }
   
   module.exports = Phone;
